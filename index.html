@@ -65,8 +65,7 @@
             background-size: cover;
             background-color: #e6f0e6;
             animation: cardFadeIn 2s ease-in-out;
-            overflow-y: auto; /* Allow scrolling */
-            max-height: 80vh; /* Limit height for mobile view */
+            /* Removed overflow-y and max-height */
         }
 
         .card .text-container {
@@ -253,13 +252,13 @@
             const elapsedHours = Math.floor(elapsedMinutes / 60);
             const elapsedDays = Math.floor(elapsedHours / 24);
 
-            const remainingSeconds = elapsedSeconds % 60;
-            const remainingMinutes = elapsedMinutes % 60;
-            const remainingHours = elapsedHours % 24;
+            const seconds = elapsedSeconds % 60;
+            const minutes = Math.floor(elapsedSeconds / 60) % 60;
+            const hours = elapsedHours % 24;
 
-            document.getElementById('days').innerText = elapsedDays;
-            document.getElementById('hours').innerText = remainingHours;
-            document.getElementById('seconds').innerText = remainingSeconds;
+            document.getElementById('days').textContent = elapsedDays;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('seconds').textContent = seconds;
         }
 
         // Update the counter every second
