@@ -184,7 +184,7 @@
         }
 
         .animated-div {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.8);
@@ -194,6 +194,7 @@
             transform: translateY(100%);
             transition: transform 1s ease-in-out;
             box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.5);
+            z-index: 2; /* Ensure it stays above other content */
         }
 
         .animated-div.show {
@@ -262,27 +263,4 @@
                     <img width="100%" src="https://1.bp.blogspot.com/-Mgj9-rbs65E/XfMoPSD5gtI/AAAAAAAAURk/NBokE2gSS2cTSJ2em5lZ5hJDuTtRN7UVwCLcBGAsYHQ/s1600/2713997.png">
                 </div>
             </div>
-            <div class="text-container">
-                <p id="head">Happy Birthday Woofie!</p>
-                <p>"This time, she mentioned covering nearly 100 chapters in her book, while my heart, full of longing, was ready to journey through seven lifetimes with her within its pages." <br> ~ He</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated-div" id="animatedDiv">
-        <div class="new-content">
-            <h2>Our Memories Till Now: 0</h2>
-            <p>Lol we are friends since July 2024. and we have made no memory till now.</p>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(() => {
-                const animatedDiv = document.getElementById('animatedDiv');
-                animatedDiv.classList.add('show');
-            }, 4000); // Delay before showing the animated div
-        });
-    </script>
-</body>
-</html>
+            <div class="
