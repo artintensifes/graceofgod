@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nandini</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: url('Images/bgimg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            z-index: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin: 0;
+            animation: fadeIn 2s ease-in-out;
+            font-weight: bold;
+            color: #ffcccb;
+        }
+
+        .subtitle {
+            font-size: 2rem;
+            margin: 10px 0;
+            animation: fadeIn 2s 1s ease-in-out;
+            font-style: italic;
+            color: #ffe4b5;
+        }
+
+        .content {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 20px;
+            animation: fadeIn 2s 2s ease-in-out;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 425px;
+            border: 10px solid #9612eb;
+            margin: 60px auto;
+            box-shadow: inset 10px 0px 15px rgba(0, 0, 0, 0.1);
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255), rgba(255, 255, 255, 0.5)), url("https://images.unsplash.com/photo-1527481138388-31827a7c94d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: #e6f0e6;
+            animation: cardFadeIn 2s ease-in-out;
+            overflow-y: auto; /* Allow scrolling */
+            max-height: 80vh; /* Limit height for mobile view */
+        }
+
+        .card .text-container {
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+
+        .strikethrough {
+            text-decoration: line-through;
+        }
+
+        .card .text-container #head {
+            font-family: 'Nobile', sans-serif;
+            font-size: 1.5em;
+            margin: 60px auto;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            line-height: 1.4;
+            font-family: 'Nobile';
+            color: #331717;
+            font-style: italic;
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        .card .front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: -10px 0 0 -10px;
+            border: 10px solid #9612eb;
+            backface-visibility: hidden;
+            background-color: #9612eb;
+            background-size: contain;
+            transform-style: preserve-3d;
+            transform-origin: 0% 50%;
+            transform: perspective(800px) rotateY(0deg);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .card:hover .front {
+            transform: perspective(800px) rotateY(-170deg);
+            background-color: #41718d;
+        }
+
+        .card:hover .back {
+            transform: perspective(800px) rotateY(-170deg);
+            box-shadow: 7px 0px 5px rgba(0, 0, 0, 0.3), inset 2px 0px 15px rgba(0, 0, 0, 0.1);
+            background-color: #d2dcd2;
+        }
+
+        .card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 10px solid #9612eb;
+            margin: -10px 0 0 -10px;
+            backface-visibility: visible;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, .5));
+            transform-style: preserve-3d;
+            transform-origin: 0% 50%;
+            transform: perspective(800px) rotateY(0deg);
+            transition: all 0.8s ease-in-out;
+            background-color: #e6f0e6;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .imgset {
+            position: relative;
+            z-index: 1;
+            margin-bottom: -215px;
+        }
+
+        .imgset img {
+            box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+            border-radius: 5px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animated-div {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 1s ease-in-out;
+            box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .animated-div.show {
+            transform: translateY(0);
+        }
+
+        .new-content h2 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #ffcccb;
+        }
+
+        .new-content p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+            color: #ffe4b5;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .content {
+                font-size: 1rem;
+                margin: 10px;
+            }
+
+            .card {
+                width: 90%;
+                height: auto;
+                margin: 20px auto;
+            }
+
+            .card p {
+                font-size: 1rem;
+                margin: 20px auto;
+            }
+
+            .new-content h2 {
+                font-size: 2rem;
+            }
+
+            .new-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Happy Birthday Nandini!</div>
+        <div class="subtitle">Wishing you a fantastic day filled with joy and happiness</div>
+        <div class="content">
+            <p>I'm so glad to have you this time. Your presence has brightened these days, and I'm excited to celebrate this special occasion with you. Here's to another year of laughter, adventure, and unforgettable memories!</p>
+        </div>
+
+        <div class="card">
+            <div class="back"></div>
+            <div class="front">
+                <div class="imgset">
+                    <img width="100%" src="https://1.bp.blogspot.com/-Mgj9-rbs65E/XfMoPSD5gtI/AAAAAAAAURk/NBokE2gSS2cTSJ2em5lZ5hJDuTtRN7UVwCLcBGAsYHQ/s1600/2713997.png">
+                </div>
+            </div>
+            <div class="text-container">
+                <p id="head">Happy Birthday Woofie!</p>
+                <p>"This time, she mentioned covering nearly 100 chapters in her book, while my heart, full of longing, was ready to journey through seven lifetimes with her within its pages." <br> ~ He</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated-div" id="animatedDiv">
+        <div class="new-content">
+            <h2>Our Memories Till Now: 0</h2>
+            <p>Lol we are friends since July 2024. and we have made no memory till now.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => {
+                const animatedDiv = document.getElementById('animatedDiv');
+                animatedDiv.classList.add('show');
+            }, 4000); // Delay before showing the animated div
+        });
+    </script>
+</body>
+</html>
