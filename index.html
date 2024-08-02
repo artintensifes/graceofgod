@@ -207,6 +207,17 @@
             top: -9999px;
             left: -9999px;
         }
+
+        /* Add a container for confetti */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999; /* Ensure confetti appears above everything */
+        }
     </style>
 </head>
 <body>
@@ -235,34 +246,58 @@
         </div>
     </div>
 
-    <video class="hidden-video" autoplay loop>
+    <video class="hidden-video" autoplay loop preload="auto">
         <source src="Video/video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
+    <!-- Container for confetti -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Include the Canvas Confetti library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    
     <script>
         // Function to calculate elapsed time since 3rd August 2006
         function calculateElapsedTime() {
             const startDate = new Date('2006-08-03T00:00:00');
             const now = new Date();
-
+    
             const elapsedMilliseconds = now - startDate;
             const elapsedSeconds = Math.floor(elapsedMilliseconds / 1000);
             const elapsedMinutes = Math.floor(elapsedSeconds / 60);
             const elapsedHours = Math.floor(elapsedMinutes / 60);
             const elapsedDays = Math.floor(elapsedHours / 24);
-
+    
             const seconds = elapsedSeconds % 60;
             const minutes = Math.floor(elapsedSeconds / 60) % 60;
             const hours = elapsedHours % 24;
-
+    
             document.getElementById('days').textContent = elapsedDays;
             document.getElementById('hours').textContent = hours;
             document.getElementById('seconds').textContent = seconds;
         }
-
+        
         // Update the counter every second
         setInterval(calculateElapsedTime, 1000);
+    
+        // Ensure the video starts playing immediately and trigger confetti
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            if (video) {
+                video.play().catch(error => {
+                    console.error('Error playing video:', error);
+                });
+            }
+            
+            // Trigger confetti effect
+            confetti({
+                particleCount: 200,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
     </script>
+    
 </body>
 </html>
