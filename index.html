@@ -65,7 +65,6 @@
             background-size: cover;
             background-color: #e6f0e6;
             animation: cardFadeIn 2s ease-in-out;
-            /* Removed overflow-y and max-height */
         }
 
         .card .text-container {
@@ -201,14 +200,12 @@
             }
         }
 
-        /* Hide the video */
         .hidden-video {
             position: absolute;
             top: -9999px;
             left: -9999px;
         }
 
-        /* Add a container for confetti */
         .confetti-container {
             position: absolute;
             top: 0;
@@ -216,7 +213,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 9999; /* Ensure confetti appears above everything */
+            z-index: 9999;
         }
     </style>
 </head>
@@ -246,19 +243,16 @@
         </div>
     </div>
 
-    <video class="hidden-video" autoplay loop preload="auto">
+    <video class="hidden-video" autoplay loop muted>
         <source src="Video/video.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
-    <!-- Container for confetti -->
     <div class="confetti-container" id="confetti"></div>
 
-    <!-- Include the Canvas Confetti library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     
     <script>
-        // Function to calculate elapsed time since 3rd August 2006
         function calculateElapsedTime() {
             const startDate = new Date('2006-08-03T00:00:00');
             const now = new Date();
@@ -278,10 +272,8 @@
             document.getElementById('seconds').textContent = seconds;
         }
         
-        // Update the counter every second
         setInterval(calculateElapsedTime, 1000);
     
-        // Ensure the video starts playing immediately and trigger confetti
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.querySelector('video');
             if (video) {
@@ -290,7 +282,6 @@
                 });
             }
             
-            // Trigger confetti effect
             confetti({
                 particleCount: 200,
                 spread: 70,
